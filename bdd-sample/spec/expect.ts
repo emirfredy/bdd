@@ -1,6 +1,6 @@
-// import chai = require('chai');
-// import chaiAsPromised = require('chai-as-promised');
+import chai = require('chai');
+import chaiAsPromised = require('chai-as-promised');
 
-// chai.use(chaiAsPromised);
+chai.use(chaiAsPromised);
 
-// export const expect = chai.expect;
+export const expect = chai.expect;

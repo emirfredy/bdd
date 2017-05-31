@@ -5,7 +5,7 @@ import { Actor } from 'serenity-js/lib/screenplay';
 import { BrowseTheWeb } from 'serenity-js/lib/screenplay-protractor';
 import { protractor } from 'protractor/built';
 
-// import { expect } from '../../spec/expect';
+import { expect } from '../../spec/expect';
 import { TodoList } from '../../spec/screenplay/components/todo_list';
 
 module.exports = function() {
@@ -26,13 +26,16 @@ module.exports = function() {
     });
 
     this.When(/^s?he adds (.*?) to (?:his|her) list$/, function(itemName: string) {
+        console.log('when item: ' + itemName);
         return actor.attemptsTo(
             AddATodoItem.called(itemName)
         );
     });
 
     this.Then(/^.* todo list should contain (.*?)$/, (items: string) => {
-        // return expect(actor.toSee(TodoList.Items_Displayed)).eventually.deep.equal(listOf(items));
+        console.log('then items: ' + items);
+        console.log('TodoList.Items_Displayed: ' + TodoList.Items_Displayed);
+        return expect(actor.toSee(TodoList.Items_Displayed)).eventually.deep.equal(listOf(items));
     });
 
 };
